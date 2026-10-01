@@ -1,0 +1,10 @@
+{
+  "appId": "de.jenaplan.reisekosten",
+  "appName": "Reisekosten",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  }
+}
