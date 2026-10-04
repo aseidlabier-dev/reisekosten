@@ -44,6 +44,7 @@ jobs:
             "platforms;android-34" \
             "build-tools;34.0.0" \
             "platform-tools" || true
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
           echo "Android SDK bereit."
 
       # 6. Android-Plattform hinzufuegen
@@ -62,9 +63,8 @@ jobs:
       - name: Debug-APK bauen
         run: |
           cd android
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
           ./gradlew assembleDebug --no-daemon --stacktrace
-        env:
-          ANDROID_HOME: ${{ env.ANDROID_HOME }}
 
       # 10. APK als Download-Artefakt bereitstellen (30 Tage verfuegbar)
       - name: APK als Artefakt hochladen
